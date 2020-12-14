@@ -23,7 +23,7 @@
                     v-for="item in menuItems"
                     :key="item.title"
                     :to="item.link"
-                    link>
+                    router>
                     <v-list-item-icon>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
