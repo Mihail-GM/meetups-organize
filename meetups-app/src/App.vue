@@ -18,12 +18,14 @@
 
             <v-divider></v-divider>
 
-            <v-list dense>
+            <v-list>
                 <v-list-item
                     v-for="item in menuItems"
                     :key="item.title"
                     :to="item.link"
-                    router>
+                    link
+                    light
+                >
                     <v-list-item-icon>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
@@ -77,14 +79,32 @@ export default {
     components: {},
 
     data: () => ({
-        sideNav: false,
-        menuItems: [
-            {icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
-            {icon: 'room', title: 'Organize Meetup', link: '/meetup/new'},
-            {icon: 'person', title: 'Profile', link: '/profile'},
-            {icon: 'face', title: 'Sign up', link: '/signup'},
-            {icon: 'lock_open', title: 'Sign in', link: '/signin'}
-        ]
+        sideNav: false
     }),
+
+    computed: {
+
+        menuItems() {
+
+            let menuItems = [
+                {icon: 'face', title: 'Sign up', link: '/signup'},
+                {icon: 'lock_open', title: 'Sign in', link: '/signin'}
+            ]
+
+            if (this.userIsAuthenticated) {
+                menuItems = [
+                    {icon: 'supervisor_account', title: 'View Meetups', link: '/meetups'},
+                    {icon: 'room', title: 'Organize Meetup', link: '/meetup/new'},
+                    {icon: 'person', title: 'Profile', link: '/profile'}
+                ]
+            }
+
+            return menuItems
+        },
+
+        userIsAuthenticated() {
+            return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+        }
+    }
 };
 </script>

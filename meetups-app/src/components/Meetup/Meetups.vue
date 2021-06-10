@@ -4,26 +4,27 @@
             <v-col xs12 sm10 md8 offset-sm1 offset-md2>
                 <v-card class="info">
                     <v-container fluid>
-                        <v-row no-gutters>
+                        <v-row no-gutters justify="space-between">
                             <v-col
                                 cols="12"
                                 xs="5"
                                 sm="4"
-                                md="3"
+                                md="2"
                                 class="py-3"
                             >
                                 <v-img
                                     :src="meetup.imageUrl"
-                                    height="130"
+                                    size="200"
                                 ></v-img>
                             </v-col>
 
                             <v-col
                                 cols="12"
-                                offset="1"
                                 xs="6"
                                 sm="7"
-                                md="8">
+                                md="10"
+                                class="d-flex flex-column align-lg-end"
+                            >
                                 <v-card-title primary-title>
                                     <div>
                                         <h5 class="white--text mb-0">My Meetup</h5>
